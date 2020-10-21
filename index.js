@@ -9,7 +9,7 @@ const app= express()
 app.use(bodyParser.json());
 app.use(cors());
 var admin = require('firebase-admin');
-var serviceAccount = require("./volunteer-network-850f9-firebase-adminsdk-ti1lv-d2941e61d5.json");
+var serviceAccount = require("./configs/volunteer-network-850f9-firebase-adminsdk-ti1lv-d2941e61d5.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://volunteer-network-850f9.firebaseio.com"
