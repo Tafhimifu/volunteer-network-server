@@ -1,8 +1,9 @@
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://volunteer:server678@cluster0.igc4i.mongodb.net/volunteerDB?retryWrites=true&w=majority";
 const bodyParser = require('body-parser')
 const cors =require('cors')
+require('dotenv').config()
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.igc4i.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const port=5000;
 const app= express()
 app.use(bodyParser.json());
@@ -82,6 +83,4 @@ res.status(401).send('un-authorized access')
 });
 
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || port)
